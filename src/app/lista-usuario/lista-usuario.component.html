@@ -1,0 +1,41 @@
+<p>lista-usuario works!</p>
+<div class="container custom-container-2">
+
+    
+    <div class="no-data text-center" *ngIf="Usuario.length == 0">
+      <p>Aun no estas registrado</p>
+      <button class="btn btn-outline-primary" routerLink="/crear-usuario">Agregar usuario</button>
+    </div>
+  
+    
+    <div *ngIf="Usuario.length !== 0">
+      <h3 class="mb-3 text-center">Lista Usuarios</h3>
+  
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">nombre</th>
+              <th scope="col">email</th>
+              <th scope="col">contraseña</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of Usuario">
+              <td>{{usuario.nombre}}</td>
+              <td>{{usuario.email}}</td>
+              <td>{{usuario.contrasena}}</td>
+              <td>
+                <span class="edit" routerLink="/update-usuario/{{usuario.contrasena}}">Editar</span>
+                <span class="delete" (click)="deleteUsuario(usuario.contrasena)">Eliminar</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  
+  </div>
+  
